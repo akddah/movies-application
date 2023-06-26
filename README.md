@@ -22,7 +22,7 @@
 <h2>Getting Started</h2>
 
 <ol>
-  <li>Clone this repository: <code>git clone https://github.com/your-username/movies-app.git</code></li>
+  <li>Clone this repository: <code>git clone https://github.com/akddah/movies-application.git</code></li>
   <li>Change to the project directory: <code>cd movies-app</code></li>
   <li>Install dependencies: <code>flutter pub get</code></li>
   <li>Run the application: <code>flutter run</code></li>
@@ -36,14 +36,16 @@
 |-- lib
     |-- data
         |-- repositories
+        |-- models
         |-- datasources
     |-- domain
         |-- models
         |-- repositories
         |-- usecases
     |-- presentation
+        |-- components
+        |-- controller
         |-- screens
-        |-- widgets
 </pre>
 
 <h2>Dependencies</h2>
