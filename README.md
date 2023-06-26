@@ -53,8 +53,8 @@
 <ul>
   <li><code>flutter_bloc</code>: State management library using the BLoC pattern.</li>
   <li><code>dio</code>: HTTP client for making API requests.</li>
-  <li><code>sqflite</code>: SQLite database for local data storage.</li>
-  <li><code>flutter_modular</code>: Dependency injection and routing library for Flutter.</li>
+  <li><code>dartz</code>: Dartz is a functional programming library for Dart that provides a collection of monads and utilities for working with functional programming concepts in Dart.</li>
+  <li><code>equatable</code>: Equatable is a Dart package that provides a simple way to implement value equality for objects by automatically generating == and hashCode methods based on the object's properties.</li>
 </ul>
 
 <p>For a complete list of dependencies and their versions, please refer to the <code>pubspec.yaml</code> file.</p>
