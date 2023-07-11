@@ -6,7 +6,7 @@ class MoviesModel extends Movie {
     required super.title,
     required super.releaseDate,
     required super.backdropPath,
-    required super.genreId,
+    required super.genreIds,
     required super.overview,
     required super.voteAverage,
   });
@@ -16,8 +16,8 @@ class MoviesModel extends Movie {
         title: json["title"],
         releaseDate: json["release_date"],
         backdropPath: json["backdrop_path"],
-        genreId: List<int>.from(json["genre_ids"].map((e) => e)),
+        genreIds: List<int>.from(json["genre_ids"].map((e) => e)),
         overview: json["overview"],
-        voteAverage: json["vote_average"].toDouble(),
+        voteAverage: json["vote_average"]?.toDouble(),
       );
 }

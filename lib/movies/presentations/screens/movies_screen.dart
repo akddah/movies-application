@@ -1,40 +1,107 @@
-import '../../data/datasource/movie_remote_data_source.dart';
-import '../../data/repository/movies_repository.dart';
-import '../../domain/repository/base_movies_repository.dart';
-import '../../domain/usecases/get_now_playing.dart';
+import '../../../core/services/services_locator.dart';
+import '../controller/movies_bloc.dart';
+import '../controller/movies_event.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../components/now_playing_component.dart';
+import '../components/populer_component.dart';
+import '../components/top_rated_component.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../../domain/entities/movie.dart';
-
-class MoviesScreens extends StatefulWidget {
-  const MoviesScreens({super.key});
-
-  @override
-  State<MoviesScreens> createState() => _MoviesScreensState();
-}
-
-class _MoviesScreensState extends State<MoviesScreens> {
-  List<Movie> list = [];
-  @override
-  void initState() {
-    _getData();
-    super.initState();
-  }
-
-  _getData() async {
-    BaseMovieRemoteDataSource baseMovieRemoteDataSource = MovieRemoteDataSource();
-    BaseMoviesRepository baseMoviesRepository = MoviesRepository(baseMovieRemoteDataSource);
-    final result = await GetNowPlayingMoviesUseCase(baseMoviesRepository).ececute();
-    result.fold((l) => null, (r) => list = r);
-    if (mounted) setState(() {});
-  }
+class MainMoviesScreen extends StatelessWidget {
+  const MainMoviesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.builder(
-        itemCount: list.length,
-        itemBuilder: (context, index) => Text(list[index].title),
+    return BlocProvider(
+      create: (context) => sl<MoviesBloc>()
+        ..add(GetNowPlayingEvent())
+        ..add(GetPopularEvent())
+        ..add(GetTopRatedEvent()),
+      child: Scaffold(
+        body: SingleChildScrollView(
+          key: const Key('movieScrollView'),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const NowPlauingComponent(),
+              Container(
+                margin: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Popular",
+                      style: GoogleFonts.poppins(
+                        fontSize: 19,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 0.15,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        /// TODO : NAVIGATION TO POPULAR SCREEN
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: const [
+                            Text('See More'),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              size: 16.0,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const PopularComponent(),
+              Container(
+                margin: const EdgeInsets.fromLTRB(
+                  16.0,
+                  24.0,
+                  16.0,
+                  8.0,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Top Rated",
+                      style: GoogleFonts.poppins(
+                        fontSize: 19,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 0.15,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        /// TODO : NAVIGATION TO Top Rated Movies Screen
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: const [
+                            Text('See More'),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              size: 16.0,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const TopRatedComponent(),
+              const SizedBox(height: 50.0),
+            ],
+          ),
+        ),
       ),
     );
   }

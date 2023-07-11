@@ -57,6 +57,7 @@
   <li><code>dio</code>: HTTP client for making API requests.</li>
   <li><code>dartz</code>: Dartz is a functional programming library for Dart that provides a collection of monads and utilities for working with functional programming concepts in Dart.</li>
   <li><code>equatable</code>: Equatable is a Dart package that provides a simple way to implement value equality for objects by automatically generating == and hashCode methods based on the object's properties.</li>
+  <li><code>get_it</code>: Flutter GetIt is a dependency injection library for managing dependencies in Flutter applications.</li>
 </ul>
 
 <p>For a complete list of dependencies and their versions, please refer to the <code>pubspec.yaml</code> file.</p>

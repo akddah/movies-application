@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'movies/presentations/screens/movies_screen.dart';
+import 'core/services/services_locator.dart';
+import 'movies/presentations/screens/splash_screen.dart';
 
 void main() {
+  ServicesLocator().init();
   runApp(const MyApp());
 }
 
@@ -14,8 +16,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: MoviesScreens(),
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.dark,
+      home: const SplashScreen(),
       // home: const MoviesScreens(title: 'Flutter Demo Home Page'),
     );
   }

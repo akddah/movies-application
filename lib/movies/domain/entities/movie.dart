@@ -4,7 +4,7 @@ class Movie extends Equatable {
   final int id;
   final String title;
   final String backdropPath;
-  final List<int> genreId;
+  final List<int> genreIds;
   final String overview;
   final double voteAverage;
   final String releaseDate;
@@ -14,11 +14,11 @@ class Movie extends Equatable {
     required this.title,
     required this.releaseDate,
     required this.backdropPath,
-    required this.genreId,
+    required this.genreIds,
     required this.overview,
     required this.voteAverage,
   });
 
   @override
-  List<Object?> get props => [id, title, backdropPath, genreId, overview, voteAverage, releaseDate];
+  List<Object?> get props => [id, title, backdropPath, genreIds, overview, voteAverage, releaseDate];
 }
