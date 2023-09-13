@@ -66,6 +66,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
   @override
   Future<List<RecommendationMovie>> getRecommendationMovies(RecommendationMoviesPrams prams) async {
     final resopnse = await Dio().get(ApiConstance.getRecommendedMovie(prams.id));
+    await Future.delayed(const Duration(seconds: 3));
     if (resopnse.statusCode == 200) {
       return List<RecommendationMoviesModel>.from(resopnse.data["results"].map((e) => RecommendationMoviesModel.fromJson(e)));
     } else {

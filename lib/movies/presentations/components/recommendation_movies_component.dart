@@ -14,6 +14,7 @@ class RecommendationComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieDetailsBloc, MovieDetailState>(
+      buildWhen: (previous, current) => previous.recommendationMovie != current.recommendationMovie,
       builder: (context, state) {
         print("build recommendation movies");
         return SliverPadding(
@@ -48,7 +49,7 @@ class RecommendationComponent extends StatelessWidget {
                   ),
                 );
               },
-              childCount: state.recommendationMovie?.length,
+              childCount: state.recommendationMovie?.length ?? 0,
             ),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               mainAxisSpacing: 8.0,
