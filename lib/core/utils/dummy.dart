@@ -1,5 +1,7 @@
 // import 'package:movies_apps/movies/domain/entities/movie.dart';
 
+// ignore_for_file: prefer_const_constructors
+
 import '../../movies/domain/entities/genres.dart';
 import '../../movies/domain/entities/movie.dart';
 import '../../movies/domain/entities/movie_detail.dart';

@@ -3,7 +3,6 @@ import 'package:courses/core/network/error_message_model.dart';
 import 'package:courses/movies/data/models/movie_detail_model.dart';
 import 'package:courses/movies/data/models/movies_model.dart';
 import 'package:courses/movies/data/models/recommendation_movies_model.dart';
-import 'package:courses/movies/domain/entities/movie_detail.dart';
 import 'package:courses/movies/domain/usecases/get_recommendation_movies_use_case.dart';
 import 'package:dio/dio.dart';
 

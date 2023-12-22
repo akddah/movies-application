@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import '../../../core/utils/enums.dart';
